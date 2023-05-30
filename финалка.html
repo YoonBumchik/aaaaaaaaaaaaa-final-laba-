@@ -30,8 +30,6 @@
 </table>
 
     <script>
-        //Выше набор кнопок с атрибутами onclick, которые создают новый объект класса "person" и вызывают методы этого объекта при нажатии на кнопку. 
-    //Кнопки имеют id и атрибут disabled, что означает, что они неактивны и не могут быть нажаты, пока не будет выполнено какое-то условие.
         let names = [];
   	    let passwords = [];
         function login() {
@@ -41,7 +39,7 @@
 	for(let index = 0; index <= names.length && index <= passwords.length; index++){
 		if(login == names[index] && password == passwords[index]){
 			var check = 1;
-		} //Функция "login" получает значения из полей ввода "name" и "password" и проверяет, есть ли такой пользователь в массивах "names" и "passwords".
+		} 
 	}
     if (check == 1) {
       alert("Вход одобрен");
@@ -54,24 +52,23 @@
         let button5 = document.getElementById('button5').disabled = false
         let button6 = document.getElementById('button6').disabled = false
     } else alert("Вход отклонен");
-    } //Если пользователь найден, то кнопки "register" и "login" становятся неактивными, а кнопки с id "button1"-"button6" становятся активными. Если пользователь не найден, выводится сообщение об ошибке.
+    } 
 
         function singup() {
     let login = document.getElementById("name").value;
     let password = document.getElementById("password").value;
 
     let nameTaken = names.includes(login); 
-    //singup получает значения из полей ввода "name" и "password" и проверяет, есть ли уже такой пользователь в массиве "names".
 
     if (!nameTaken) {
       names.push(login);
       passwords.push(password);
       alert("Регистрация завершена");
-    } //Если пользователь не найден, то его имя и пароль добавляются в соответствующие массивы, и выводится сообщение об успешной регистрации. 
+    } 
 
 	else {
         alert("Регистрация не завершена");
-    } //Если пользователь уже существует, выводится сообщение об ошибке.
+    } 
   }
         let arr1 = []
         let arr1_1 = []
@@ -86,7 +83,6 @@
                 let date = new Date(dateString);
                 let month = date.getMonth() + 1;
                 return month;}
-                //Функция "getMonthFromDate" принимает строку с датой и возвращает номер месяца. 
 
         class spend{
             constructor(month, category, amount){
@@ -101,7 +97,7 @@
                 this.category = category
                 this.amount = amount
             }
-        } //Классы "spend" и "second_spend" содержат информацию о месяце, категории и сумме расходов.
+        } 
 
         class  Topupwithmoney{
             constructor(amount){
@@ -110,8 +106,7 @@
         class second_badtrip{
             constructor(amount){
                 this.amount = amount
-        }} //Классы "Topupwithmoney" и "second_badtrip" содержат информацию о сумме доходов.
-
+        }} 
         class Balance{
             constructor(Balance){
                 this.Balance = Balance
@@ -121,11 +116,10 @@
             constructor(Balance){
                 this.Balance = balance
             }
-        } //Классы "Balance" и "second_balance" содержат информацию о текущем балансе.
+        } 
 
         class person{
             Wasteofmoney()
-            //метод запрашивает у пользователя информацию о покупке (карта, дата, категория, сумма)
             {
                 let card = prompt("Какая карта будет использована")
                 let buyDate = prompt("Дата покупки")
@@ -144,7 +138,7 @@
                     arr1_1.push(new second_spend(BuyMonth, buyDate, parseInt(amount)))
                     localStorage.setItem("second_spend", JSON.stringify(arr1_1))
                     console.log(arr1_1)
-                } //в зависимости от выбора карты, создает объект класса "spend" или "second_spend" и добавляет его в соответствующий массив ("arr1" или "arr1_1")
+                } 
 
             }
             topupwmoney(){
@@ -160,11 +154,10 @@
                     arr2_2.push(new second_badtrip(amount))
                     localStorage.setItem("second_badtrip", JSON.stringify(arr2_2))
                     console.log(arr2_2)
-                } //сохраняет массив в локальное хранилище и выводит его в консоль
+                }
             }
 
             checkbalance()
-            ////запрашивает у пользователя информацию о карте, которую он хочет использовать, а затем считает баланс этой карты.
             {
                 let sum = 0
                 let card = prompt("какая карта будет использована")
@@ -185,7 +178,6 @@
                     arr3.push(new Balance(sum))
                     localStorage.setItem("Баланс", JSON.stringify(arr3))
                     console.log(arr3)
-                    //Если пользователь выбирает карту "1", то функция суммирует все расходы из массива "arr1" и вычитает их из суммы, а затем суммирует все доходы из массива "arr2" и прибавляет их к сумме. Полученная сумма записывается в объект класса "Balance" и добавляется в массив "arr3".
 
                 }else
                 {
@@ -201,12 +193,10 @@
                     arr3_3.push(new balance(sum))
                     localStorage.setItem("second_balance", JSON.stringify(arr3_3))
                     console.log(localStorage.getItem("second_balance"))
-                    //В конце функция сохраняет массив в локальное хранилище и выводит его в консоль.
                 }   
                     }
 
             payformonth()
-            //запрашивает у пользователя информацию о карте, которую он хочет использовать и месяце, в котором была совершена покупка.
             {
                 let card = prompt("Какая карта будет использована")
                 let month = prompt("В каком месяце была покупка")
@@ -222,7 +212,6 @@
                     }
                     var get = arr4.reduce((sum, arr4) => sum + arr4.amount, 0)
                     console.log(get)
-                    //Если пользователь выбирает карту "1", то функция находит все расходы из массива "arr1" за указанный месяц и записывает их в массив "arr4". Затем функция суммирует все суммы из массива "arr4" и выводит результат в консоль.
                 } else 
                 {
                     for(let i = 0; i < arr1_1.length; i++)
@@ -238,58 +227,38 @@
             }
 
             payforall()
-            //запрашивает у пользователя информацию о карте, которую он хочет использовать, и сохраняет ответ в переменной card.
             {
                 let card = prompt("какая карта будет использована")
                 if (card == 1)
                 {
                     // общая сумма трат
-                    let totalExpenses = arr1.reduce((sum, expense) => sum + expense.amount, 0);
-                    //Если пользователь выбирает карту "1", то функция находит все расходы из массива arr1 и суммирует их с помощью метода reduce(), сохраняя общую сумму трат в переменной totalExpenses. 
+                    let totalExpenses = arr1.reduce((sum, expense) => sum + expense.amount, 0); 
                     let categories = {};
-                    //Затем функция создает пустой объект categories
-                    arr1.forEach(expense => {
-                        //и проходит по каждому элементу массива arr1 с помощью метода forEach(). 
+                    arr1.forEach(expense => { 
                     if (categories[expense.category]) {
-                        //Для каждого расхода функция проверяет, есть ли уже категория в объекте categories. 
                         categories[expense.category] += expense.amount;
-                        //Если есть, то функция добавляет сумму расхода к соответствующей категории. 
-                    } else {
+			     } else {
                         categories[expense.category] = expense.amount;
                         }});
-                        //Если нет, то функция создает новую категорию и добавляет к ней сумму расхода. 
                     
                         let percentages = {};
-                        //После этого функция создает пустой объект percentages
                         Object.entries(categories).forEach(([category, amount]) => {
-                            //и проходит по каждой категории в объекте categories с помощью метода Object.entries(). 
                         percentages[category] = (amount / totalExpenses) * 100;})
-                        //Для каждой категории функция вычисляет процент от общей суммы трат и записывает его в объект percentages. 
                         let sortedCategories = Object.keys(percentages).sort((a, b) => percentages[b] - percentages[a]);
-                        //Затем функция сортирует категории в порядке убывания процентов 
-
                         console.log(percentages);
-                        //и выводит объект percentages в консоль.
                 }
             }
 
             Predict()
-            //запрашивает у пользователя информацию о карте, которую он хочет использовать, и сохраняет ответ в переменной card.
             {
                 let card = prompt("какая карта будет использована")
                 if(card == 1)
-                //Если пользователь выбирает карту "1"
                 {
                     let predictspend = arr1.reduce((sum, expense) => sum + expense.amount, 0);
                     predictspend *= .5
-                    //функция находит все расходы из массива arr1 и суммирует их с помощью метода reduce(), сохраняя общую сумму трат в переменной predictspend. 
-                    //Затем функция умножает predictspend на 0.5 и сохраняет результат в той же переменной.
                     let predictbadtrip = arr2.reduce((sum, expense) => sum + expense.amount, 0);
                     predictbadtrip *= .5
-                    //Далее функция находит все расходы из массива arr2 и суммирует их с помощью метода reduce(), сохраняя общую сумму расходов на плохие поездки в переменной predictbadtrip.
-                    //Затем функция умножает predictbadtrip на 0.5 и сохраняет результат в той же переменной.
                     console.log("ожидание прихода", predictbadtrip, "предикт трат", predictspend)
-                    //После этого функция выводит значения predictbadtrip и predictspend в консоль.
                 } else
                 {
                     let predictspend = arr1_1.reduce((sum, expense) => sum + expense.amount, 0);
